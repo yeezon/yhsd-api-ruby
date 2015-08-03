@@ -1,4 +1,4 @@
-# YhsdApi
+# yhsd-api-ruby
 
 友好速搭应用开发 Ruby SDK
 
