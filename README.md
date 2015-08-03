@@ -24,7 +24,7 @@ gem 'yhsd_api'
 
 ## 使用方法
 
-1，私有应用
+###1，私有应用
 
 配置私有应用的app_key, app_secret
 
@@ -119,7 +119,7 @@ gem 'yhsd_api'
 
 来进行指定token值，这样就不需要调用generate_token来获取token值了。
 
-2，开放应用
+###2，开放应用
 
 配置公有一用的app_key, app_secret
 
