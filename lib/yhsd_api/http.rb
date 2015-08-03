@@ -1,6 +1,6 @@
 require 'rest-client'
 
-module YhsdApp
+module YhsdApi
 
   class HTTP
 

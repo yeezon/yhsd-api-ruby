@@ -1,4 +1,4 @@
-module YhsdApp
+module YhsdApi
 
   class MissingToken < Exception
 

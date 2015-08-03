@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in yhsd_app.gemspec
+# Specify your gem's dependencies in yhsd_api.gemspec
 gemspec

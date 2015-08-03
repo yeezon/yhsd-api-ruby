@@ -1,11 +1,11 @@
-module YhsdApp
+module YhsdApi
 
   class PublicApp
 
     class << self
 
       def verify_hmac(params = {})
-        raise MissingAppSecret if YhsdApp.configuration.app_secret.to_s.empty?
+        raise MissingAppSecret if YhsdApi.configuration.app_secret.to_s.empty?
 
         hmac = params[:hmac].to_s
         return false if hmac.empty?
@@ -14,31 +14,31 @@ module YhsdApp
           "#{k.to_s}=#{params[k].to_s}"
         end.join('&')
         digest = OpenSSL::Digest.new('sha256')
-        hmac == OpenSSL::HMAC.hexdigest(digest, YhsdApp.configuration.app_secret, str)
+        hmac == OpenSSL::HMAC.hexdigest(digest, YhsdApi.configuration.app_secret, str)
 
       end
 
       def authorize_url(redirect_uri, shop_key, state = '')
-        raise MissingAppKey if YhsdApp.configuration.app_key.to_s.empty?
-        raise MissingScope if YhsdApp.configuration.scope.to_s.empty?
+        raise MissingAppKey if YhsdApi.configuration.app_key.to_s.empty?
+        raise MissingScope if YhsdApi.configuration.scope.to_s.empty?
 
         params = "?response_type=code"
-        params +="&client_id=#{YhsdApp.configuration.app_key}"
+        params +="&client_id=#{YhsdApi.configuration.app_key}"
         params +="&shop_key=#{shop_key}"
-        params +="&scope=#{YhsdApp.configuration.scope}"
+        params +="&scope=#{YhsdApi.configuration.scope}"
         params +="&redirect_uri=#{redirect_uri}"
         params +="&state=#{state}" unless state.to_s.empty?
 
-        URI.join(YhsdApp.configuration.auth_url, params).to_s
+        URI.join(YhsdApi.configuration.auth_url, params).to_s
       end
 
       def generate_token(redirect_uri, code)
-        raise MissingAppKey if YhsdApp.configuration.app_key.to_s.empty?
+        raise MissingAppKey if YhsdApi.configuration.app_key.to_s.empty?
 
         req_body = {
           "grant_type" => 'authorization_code',
           "code" => code,
-          "client_id" => YhsdApp.configuration.app_key,
+          "client_id" => YhsdApi.configuration.app_key,
           "redirect_uri" => redirect_uri
         }
 
@@ -48,7 +48,7 @@ module YhsdApp
           }
         }
         
-        code, body, header = HTTP::post(YhsdApp.configuration.token_url, req_body, opts)
+        code, body, header = HTTP::post(YhsdApi.configuration.token_url, req_body, opts)
         if code == 200
           JSON.parse(body)["token"]
         else
@@ -64,7 +64,7 @@ module YhsdApp
           "X-API-ACCESS-TOKEN" => token
         }}
 
-        YhsdApp::HTTP::get(url, opts)
+        YhsdApi::HTTP::get(url, opts)
       end
 
       def delete(token, url)
@@ -74,7 +74,7 @@ module YhsdApp
           "X-API-ACCESS-TOKEN" => token
         }}
 
-        YhsdApp::HTTP::delete(url, opts)
+        YhsdApi::HTTP::delete(url, opts)
       end
 
       def post(token, url, req_body)
@@ -86,7 +86,7 @@ module YhsdApp
           :accept => :json
         }}
 
-        YhsdApp::HTTP::post(url, req_body.to_json, opts)
+        YhsdApi::HTTP::post(url, req_body.to_json, opts)
       end
 
       def put(token, url, req_body)
@@ -98,7 +98,7 @@ module YhsdApp
           :accept => :json
         }}
 
-        YhsdApp::HTTP::put(url, req_body.to_json, opts)
+        YhsdApi::HTTP::put(url, req_body.to_json, opts)
       end
 
       def validate_token token

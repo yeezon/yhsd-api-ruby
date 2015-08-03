@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'yhsd_app/version'
+require 'yhsd_api/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "yhsd_app"
-  spec.version       = YhsdApp::VERSION
+  spec.name          = "yhsd_api"
+  spec.version       = YhsdApi::VERSION
   spec.authors       = ["jinhua"]
   spec.email         = ["kg19902933@gmail.com"]
   spec.summary       = %q{Youhaosuda App SDK}
