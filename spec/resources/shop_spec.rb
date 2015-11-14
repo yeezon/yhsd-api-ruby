@@ -13,7 +13,7 @@ describe YhsdApi::Shop do
   end
 
   it "get shop info will success" do
-    code, body, header = YhsdApi::Shop.info(@token, params)
+    code, body, header = YhsdApi::Shop.info(@token)
     expect(code).to eq(200)
   end
 
