@@ -104,6 +104,7 @@ module YhsdApi
       def validate_token token
         raise MissingToken if token.to_s.empty?
       end
+
     end
 
   end

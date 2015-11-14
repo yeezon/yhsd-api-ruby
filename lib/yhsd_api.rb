@@ -7,6 +7,7 @@ require "yhsd_api/http"
 require "yhsd_api/exception"
 require "yhsd_api/public_app"
 require "yhsd_api/private_app"
+require "yhsd_api/resources"
 
 module YhsdApi
   # Your code goes here...

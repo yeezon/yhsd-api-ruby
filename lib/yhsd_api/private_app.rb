@@ -86,6 +86,14 @@ module YhsdApi
       def validate_token
         raise MissingToken if @token.to_s.empty?
       end
+
+      def handle_query_string(params)
+        return '' unless params === Hash
+        params.keys.map do |k|
+          "#{CGI.escape(k.to_s)}=#{CGI.escape(params[k].to_s)}"
+        end.join('&')
+      end
+
     end
 
   end
