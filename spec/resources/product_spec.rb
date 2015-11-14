@@ -14,7 +14,6 @@ describe YhsdApi::Product do
 
   it "get all product must be success" do
     code, body, header = YhsdApi::Product.all(@token)
-    puts body
     expect(code).to eq(200)
   end
 

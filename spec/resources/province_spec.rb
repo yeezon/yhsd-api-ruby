@@ -25,7 +25,6 @@ describe YhsdApi::Province do
 
   it "get single province info" do
     code, body, header = YhsdApi::Province.find(@token, @country_id, @id)
-    puts body
     expect(code).to eq(200)
   end
 

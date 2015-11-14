@@ -9,7 +9,7 @@ describe YhsdApi::Metafield do
     YhsdApi.configure do |config|
       config.api_url = 'http://api.public.com/v1/'
     end
-    @id = 34
+    @id = 48
   end
 
   it "get all metafield must be success" do

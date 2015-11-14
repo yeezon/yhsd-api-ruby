@@ -15,7 +15,6 @@ describe YhsdApi::ProductVariant do
 
   it "get all product image must be success" do
     code, body, header = YhsdApi::ProductImage.all(@token, @product_id)
-    puts body
     expect(code).to eq(200)
   end
 
