@@ -46,4 +46,4 @@
 
 
 - Basic support yhsd api
-- About how to use you can see README.md
+- About how to use you can see [README.md][https://github.com/yeezon/yhsd-api-ruby/blob/master/README.md]
