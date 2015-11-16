@@ -13,6 +13,7 @@ describe YhsdApi::PrivateApp do
       config.app_secret = '13516ce822b841ce8d5b91630d97d050'
       config.token_url = 'http://apps.localtest.com/oauth2/token/'
       config.api_url = 'http://api.public.com/v1/'
+      config.call_limit_protect = true
     end
   end
 
@@ -28,7 +29,6 @@ describe YhsdApi::PrivateApp do
 
   it "private app generate_token" do
     token = YhsdApi::PrivateApp.generate_token
-    puts token
   end
 
   it "private app get" do

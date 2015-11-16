@@ -8,11 +8,13 @@ module YhsdApi
     attr_accessor :auth_url
     attr_accessor :token_url
     attr_accessor :api_url
+    attr_accessor :call_limit_protect
 
     def initialize
       @auth_url = "https://apps.youhaosuda.com/oauth2/authorize/"
       @token_url = 'https://apps.youhaosuda.com/oauth2/token/'
       @api_url = 'https://api.youhaosuda.com/v1/'
+      @call_limit_protect = false
     end
     
   end
