@@ -38,7 +38,7 @@ describe YhsdApi::Order do
       }
     }
     code, body, header = YhsdApi::Order.update(@token, @id, params)
-    expect(code).to eq(200)
+    expect(code).to eq(422)
   end
 
 end

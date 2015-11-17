@@ -25,7 +25,6 @@ module YhsdApi
           after_request(response.raw_headers) if YhsdApi.configuration.call_limit_protect
           return response.code.to_i, response.body, response.raw_headers
         rescue Exception => e
-          puts e
           return e.http_code.to_i, e.response, {}
         end
 
@@ -97,7 +96,7 @@ module YhsdApi
 
       def after_request(header)
         begin
-          if header && header === Hash && header.keys.include?("x-yhsd-shop-api-call-limit")
+          if header && header.is_a?(Hash) && header.keys.include?("x-yhsd-shop-api-call-limit")
             call_limit =  header["x-yhsd-shop-api-call-limit"].first.split("/")
             @@limit, @@total = call_limit[0].to_i, call_limit[1].to_i
             @@last_at = Time.now.to_i
