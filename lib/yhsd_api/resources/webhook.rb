@@ -1,3 +1,5 @@
+require 'openssl'
+
 module YhsdApi
 
   class Webhook < YhsdApi::Base
@@ -36,6 +38,12 @@ module YhsdApi
       path = "webhooks/#{id}"
       uri = URI.join(YhsdApi.configuration.api_url, path)
       YhsdApi::HTTP::delete(uri, build_header(token))
+    end
+
+    def self.verify(data, webhook_token, hmac_header)
+      digest  = OpenSSL::Digest.new('sha256')
+      calculated_hmac = Base64.encode64(OpenSSL::HMAC.digest(digest, webhook_token, data)).strip
+      calculated_hmac == hmac_header
     end
 
   end
