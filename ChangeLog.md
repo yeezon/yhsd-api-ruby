@@ -2,6 +2,7 @@
 next
 -----------
 -YhsdPublicApi and YhsdPrivateApi get post delete put function change url params to path
+
 -FIX scope /r/n change to URI bug
 
 0.0.2
