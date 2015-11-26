@@ -34,7 +34,7 @@ describe YhsdApi::PrivateApp do
   it "private app get" do
     YhsdApi::PrivateApp.generate_token
     path = "redirects"
-    code, body, header = YhsdApi::PrivateApp.get(YhsdApi.configuration.api_url + path)
+    code, body, header = YhsdApi::PrivateApp.get(path)
     expect(code).to eq(200)
   end
 

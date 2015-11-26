@@ -6,7 +6,8 @@ describe YhsdApi::PublicApp do
     YhsdApi.configure do |config|
       config.app_key = 'd677ae82993a48fcaaf3c05ead9f46ea'
       config.app_secret = '6e6d1e96f23f49a1a59f9ce87fed1763'
-      config.scope = 'read_basic,write_basic'
+      config.scope = 'read_basic,
+      write_basic        '
       config.auth_url = "https://apps.youhaosuda.com/oauth2/authorize/"
       config.token_url = 'https://apps.youhaosuda.com/oauth2/token/'
       config.api_url = 'https://api.youhaosuda.com/v1/'

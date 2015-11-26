@@ -16,6 +16,10 @@ module YhsdApi
       @api_url = 'https://api.youhaosuda.com/v1/'
       @call_limit_protect = false
     end
+
+    def scope
+      @scope.gsub!(/\r?\n/, '').gsub!(/\s+/, "")
+    end
     
   end
 

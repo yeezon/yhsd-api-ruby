@@ -43,6 +43,10 @@ module YhsdApi
           "X-API-ACCESS-TOKEN" => @token
         }}
 
+        if url && !url.start_with?('http://') && !url.start_with?('https://')
+          url = URI.join(YhsdApi.configuration.api_url, url)
+        end
+
         YhsdApi::HTTP::get(url, opts)
       end
 
@@ -53,6 +57,10 @@ module YhsdApi
         opts = {:headers => {
           "X-API-ACCESS-TOKEN" => @token
         }}
+
+        if url && !url.start_with?('http://') && !url.start_with?('https://')
+          url = URI.join(YhsdApi.configuration.api_url, url)
+        end
 
         YhsdApi::HTTP::delete(url, opts)
       end
@@ -67,6 +75,10 @@ module YhsdApi
           :accept => :json
         }}
 
+        if url && !url.start_with?('http://') && !url.start_with?('https://')
+          url = URI.join(YhsdApi.configuration.api_url, url)
+        end
+
         YhsdApi::HTTP::post(url, req_body.to_json, opts)
       end
 
@@ -79,6 +91,10 @@ module YhsdApi
           :content_type => :json,
           :accept => :json
         }}
+
+        if url && !url.start_with?('http://') && !url.start_with?('https://')
+          url = URI.join(YhsdApi.configuration.api_url, url)
+        end
 
         YhsdApi::HTTP::put(url, req_body.to_json, opts)
       end
