@@ -44,7 +44,7 @@ module YhsdApi
         }}
 
         if url && !url.start_with?('http://') && !url.start_with?('https://')
-          url = URI.join(YhsdApi.configuration.api_url, url)
+          url = URI.join(YhsdApi.configuration.api_url, YhsdApi.configuration.api_version, url)
         end
 
         YhsdApi::HTTP::get(url, opts)
@@ -59,7 +59,7 @@ module YhsdApi
         }}
 
         if url && !url.start_with?('http://') && !url.start_with?('https://')
-          url = URI.join(YhsdApi.configuration.api_url, url)
+          url = URI.join(YhsdApi.configuration.api_url, YhsdApi.configuration.api_version, url)
         end
 
         YhsdApi::HTTP::delete(url, opts)
@@ -76,7 +76,7 @@ module YhsdApi
         }}
 
         if url && !url.start_with?('http://') && !url.start_with?('https://')
-          url = URI.join(YhsdApi.configuration.api_url, url)
+          url = URI.join(YhsdApi.configuration.api_url, YhsdApi.configuration.api_version, url)
         end
 
         YhsdApi::HTTP::post(url, req_body.to_json, opts)
@@ -93,7 +93,7 @@ module YhsdApi
         }}
 
         if url && !url.start_with?('http://') && !url.start_with?('https://')
-          url = URI.join(YhsdApi.configuration.api_url, url)
+          url = URI.join(YhsdApi.configuration.api_url, YhsdApi.configuration.api_version, url)
         end
 
         YhsdApi::HTTP::put(url, req_body.to_json, opts)

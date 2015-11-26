@@ -34,7 +34,8 @@ YhsdApi.configure do |config|
   config.app_secret = '配置你的app_secret'
   config.auth_url = "https://apps.youhaosuda.com/oauth2/authorize/"
   config.token_url = 'https://apps.youhaosuda.com/oauth2/token/'
-  config.api_url = 'https://api.youhaosuda.com/v1/'
+  config.api_url = 'https://api.youhaosuda.com'
+  config.api_version = '/v1/'
 end
 ```
 
@@ -87,7 +88,7 @@ YhsdApi::PrivateApp.delete(url)
 YhsdApi::PrivateApp.token = '获取到的token'
 
 #get 接口调用
-code, body, header = YhsdApi::PrivateApp.get("https://api.youhaosuda.com/v1/shop")
+code, body, header = YhsdApi::PrivateApp.get("shop")
 
 #put 接口调用
 params = {
@@ -96,7 +97,7 @@ params = {
     "target": "/blogs"
   }
 }
-code, body, header = YhsdApi::PrivateApp.put("https://api.youhaosuda.com/v1/redirects/1", params)
+code, body, header = YhsdApi::PrivateApp.put("redirects/1", params)
 
 #post 接口调用
 params = {
@@ -105,10 +106,10 @@ params = {
     "target": "/blogs"
   }
 }
-code, body, header = YhsdApi::PrivateApp.put("https://api.youhaosuda.com/v1/redirects", params)
+code, body, header = YhsdApi::PrivateApp.put("redirects", params)
 
 #delete 接口调用
-code, body, header = YhsdApi::PrivateApp.delete("https://api.youhaosuda.com/v1/redirects/1")
+code, body, header = YhsdApi::PrivateApp.delete("redirects/1")
 ```
 
 友好速搭的token是不过期的，你也可以通过
@@ -130,7 +131,8 @@ YhsdApi.configure do |config|
   config.scope = '配置你的应用scope'
   config.auth_url = "https://apps.youhaosuda.com/oauth2/authorize/"
   config.token_url = 'https://apps.youhaosuda.com/oauth2/token/'
-  config.api_url = 'https://api.youhaosuda.com/v1/'
+  config.api_url = 'https://api.youhaosuda.com'
+  config.api_version = '/v1/'
 end
 ```
 
@@ -208,7 +210,7 @@ YhsdApi::PrivateApp.delete(token, url)
 token = '店铺的访问token'
 
 #get 接口调用
-code, body, header = YhsdApi::PrivateApp.get(token, "https://api.youhaosuda.com/v1/shop")
+code, body, header = YhsdApi::PrivateApp.get(token, "shop")
 
 #put 接口调用
 params = {
@@ -217,7 +219,7 @@ params = {
     "target": "/blogs"
   }
 }
-code, body, header = YhsdApi::PrivateApp.put(token, "https://api.youhaosuda.com/v1/redirects/1", params)
+code, body, header = YhsdApi::PrivateApp.put(token, "redirects/1", params)
 
 #post 接口调用
 params = {
@@ -226,10 +228,10 @@ params = {
     "target": "/blogs"
   }
 }
-code, body, header = YhsdApi::PrivateApp.put("token, https://api.youhaosuda.com/v1/redirects", params)
+code, body, header = YhsdApi::PrivateApp.put("token, "redirects", params)
 
 #delete 接口调用
-code, body, header = YhsdApi::PrivateApp.delete(token, "https://api.youhaosuda.com/v1/redirects/1")
+code, body, header = YhsdApi::PrivateApp.delete(token, "redirects/1")
 ```
 
 ## 贡献

@@ -12,7 +12,7 @@ describe YhsdApi::PrivateApp do
       config.app_key = 'ab3217683c964c82a685c22d9440f240'
       config.app_secret = '13516ce822b841ce8d5b91630d97d050'
       config.token_url = 'http://apps.localtest.com/oauth2/token/'
-      config.api_url = 'http://api.public.com/v1/'
+      config.api_url = 'http://api.public.com'
       config.call_limit_protect = true
     end
   end
@@ -47,7 +47,7 @@ describe YhsdApi::PrivateApp do
           "target": "/blogs"
         }
     }
-    code, body, header = YhsdApi::PrivateApp.post(YhsdApi.configuration.api_url + path, params)
+    code, body, header = YhsdApi::PrivateApp.post(path, params)
     expect([200, 422]).to include(code)
   end
 
@@ -60,14 +60,14 @@ describe YhsdApi::PrivateApp do
           "target": "/blogs"
         }
     }
-    code, body, header = YhsdApi::PrivateApp.put(YhsdApi.configuration.api_url + path, params)
+    code, body, header = YhsdApi::PrivateApp.put(path, params)
     expect([200, 422]).to include(code)
   end
 
   it "private app delete" do
     YhsdApi::PrivateApp.generate_token
     path = "redirects/23"
-    code, body, header = YhsdApi::PrivateApp.delete(YhsdApi.configuration.api_url + path)
+    code, body, header = YhsdApi::PrivateApp.delete(path)
     expect([200, 422]).to include(code)
   end
 

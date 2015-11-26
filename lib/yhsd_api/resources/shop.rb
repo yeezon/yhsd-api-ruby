@@ -4,7 +4,7 @@ module YhsdApi
 
     def self.info(token, params = {})
       path = "shop#{handle_query_string(params)}"
-      uri = URI.join(YhsdApi.configuration.api_url, path)
+      uri = URI.join(YhsdApi.configuration.api_url, YhsdApi.configuration.api_version, path)
       YhsdApi::HTTP::get(uri, build_header(token))
     end
 

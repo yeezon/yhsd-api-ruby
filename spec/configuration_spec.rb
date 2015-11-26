@@ -11,7 +11,7 @@ describe YhsdApi::Configuration do
   end
 
   it "configure default api_url" do
-    expect(YhsdApi.configuration.api_url).to eq('https://api.youhaosuda.com/v1/')
+    expect(YhsdApi.configuration.api_url).to eq('https://api.youhaosuda.com')
   end
 
   it "configure default auth_url" do

@@ -25,7 +25,11 @@ module YhsdApi
           after_request(response.raw_headers) if YhsdApi.configuration.call_limit_protect
           return response.code.to_i, response.body, response.raw_headers
         rescue Exception => e
-          return e.http_code.to_i, e.response, {}
+          if e.class.to_s.split("::").first.to_s == 'RestClient'
+            return e.http_code.to_i, e.response, {}
+          else
+            raise e
+          end
         end
 
       end
@@ -45,7 +49,11 @@ module YhsdApi
           after_request(response.raw_headers) if YhsdApi.configuration.call_limit_protect
           return response.code.to_i, response.body, response.raw_headers
         rescue Exception => e
-          return e.http_code.to_i, e.response, {}
+          if e.class.to_s.split("::").first.to_s == 'RestClient'
+            return e.http_code.to_i, e.response, {}
+          else
+            raise e
+          end
         end
 
       end
@@ -65,7 +73,11 @@ module YhsdApi
           after_request(response.raw_headers) if YhsdApi.configuration.call_limit_protect
           return response.code.to_i, response.body, response.raw_headers
         rescue Exception => e
-          return e.http_code.to_i, e.response, {}
+          if e.class.to_s.split("::").first.to_s == 'RestClient'
+            return e.http_code.to_i, e.response, {}
+          else
+            raise e
+          end
         end
 
       end
@@ -85,7 +97,11 @@ module YhsdApi
           after_request(response.raw_headers) if YhsdApi.configuration.call_limit_protect
           return response.code.to_i, response.body, response.raw_headers
         rescue Exception => e
-          return e.http_code.to_i, e.response, {}
+          if e.class.to_s.split("::").first.to_s == 'RestClient'
+            return e.http_code.to_i, e.response, {}
+          else
+            raise e
+          end
         end
 
       end
