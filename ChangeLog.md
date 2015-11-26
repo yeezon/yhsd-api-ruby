@@ -43,7 +43,7 @@ next
     config.call_limit_protect = true
   end
 ```
-  this call limit is basic on shop token, so i advice open it in private app and close is public app , public app manage mutil shops, so may be some shop request api over call limit , other shop
+  this call limit is basic on shop token, so i advice open it in private app and close in public app , public app manage mutil shops, so may be some shop request api over call limit , other shop
   will be affect
 
 0.0.1
