@@ -20,7 +20,7 @@ module YhsdApi
     end
 
     def scope
-      @scope.to_s.gsub!(/\s+/, "")
+      @scope.to_s.gsub(/\s+/, "")
     end
     
   end
