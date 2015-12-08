@@ -50,7 +50,7 @@ module YhsdApi
         
         code, body, header = HTTP::post(YhsdApi.configuration.token_url, req_body, opts)
         if code == 200
-          JSON.parse(body)["token"]
+          Oj.load(body)["token"]
         else
           raise Exception.new(body)
         end

@@ -1,5 +1,5 @@
 require 'base64'
-require 'json'
+require 'oj'
 require 'openssl'
 require "yhsd_api/version"
 require "yhsd_api/configuration"
