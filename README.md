@@ -34,8 +34,8 @@ YhsdApi.configure do |config|
   config.app_secret = '配置你的app_secret'
   config.auth_url = "https://apps.youhaosuda.com/oauth2/authorize/"
   config.token_url = 'https://apps.youhaosuda.com/oauth2/token/'
-  config.api_url = 'https://api.youhaosuda.com'
-  config.api_version = '/v1/'
+  config.api_url = 'https://api.youhaosuda.com/'
+  config.api_version = 'v1/'
 end
 ```
 
@@ -131,8 +131,8 @@ YhsdApi.configure do |config|
   config.scope = '配置你的应用scope'
   config.auth_url = "https://apps.youhaosuda.com/oauth2/authorize/"
   config.token_url = 'https://apps.youhaosuda.com/oauth2/token/'
-  config.api_url = 'https://api.youhaosuda.com'
-  config.api_version = '/v1/'
+  config.api_url = 'https://api.youhaosuda.com/'
+  config.api_version = 'v1/'
 end
 ```
 

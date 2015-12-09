@@ -10,7 +10,7 @@ describe YhsdApi::PublicApp do
       write_basic        '
       config.auth_url = "http://apps.localtest.com/oauth2/authorize/"
       config.token_url = 'http://apps.localtest.com/oauth2/token/'
-      config.api_url = 'http://api.public.com'
+      config.api_url = 'http://api.public.com/'
     end
     @token = 'b66079ff889e463e8c583c2c3755bd2d'
   end
