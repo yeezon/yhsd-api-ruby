@@ -14,13 +14,21 @@ module YhsdApi
     def initialize
       @auth_url = "https://apps.youhaosuda.com/oauth2/authorize/"
       @token_url = 'https://apps.youhaosuda.com/oauth2/token/'
-      @api_url = 'https://api.youhaosuda.com'
-      @api_version = '/v1/'
+      @api_url = 'https://api.youhaosuda.com/'
+      @api_version = 'v1/'
       @call_limit_protect = false
     end
 
     def scope
       @scope.to_s.gsub(/\s+/, "")
+    end
+
+    def api_version
+      unless @api_version.end_with?("/")
+        @api_version.to_s + "/"
+      else
+        @api_version
+      end
     end
     
   end

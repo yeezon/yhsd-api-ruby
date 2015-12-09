@@ -12,7 +12,8 @@ describe YhsdApi::PrivateApp do
       config.app_key = 'ab3217683c964c82a685c22d9440f240'
       config.app_secret = '13516ce822b841ce8d5b91630d97d050'
       config.token_url = 'http://apps.localtest.com/oauth2/token/'
-      config.api_url = 'http://api.public.com'
+      config.api_url = 'http://api.public.com/'
+      config.api_version = "v1"
       config.call_limit_protect = true
     end
   end
