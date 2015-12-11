@@ -2,6 +2,7 @@ require 'base64'
 require 'oj'
 require 'openssl'
 require "yhsd_api/version"
+require "yhsd_api/helper"
 require "yhsd_api/configuration"
 require "yhsd_api/http"
 require "yhsd_api/exception"

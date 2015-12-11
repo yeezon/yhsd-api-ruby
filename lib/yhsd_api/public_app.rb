@@ -4,20 +4,6 @@ module YhsdApi
 
     class << self
 
-      def verify_hmac(params = {})
-        raise MissingAppSecret if YhsdApi.configuration.app_secret.to_s.empty?
-
-        hmac = params[:hmac].to_s
-        return false if hmac.empty?
-        p = params.delete_if{|key, value| key == "hmac"}
-        str = p.keys.sort.map do |k|
-          "#{k.to_s}=#{params[k].to_s}"
-        end.join('&')
-        digest = OpenSSL::Digest.new('sha256')
-        hmac == OpenSSL::HMAC.hexdigest(digest, YhsdApi.configuration.app_secret, str)
-
-      end
-
       def authorize_url(redirect_uri, shop_key, state = '')
         raise MissingAppKey if YhsdApi.configuration.app_key.to_s.empty?
         raise MissingScope if YhsdApi.configuration.scope.to_s.empty?

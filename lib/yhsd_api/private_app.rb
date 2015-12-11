@@ -14,7 +14,7 @@ module YhsdApi
 
         opts = {
           :headers =>{
-            :Authorization => generate_authorization,
+            :Authorization => YhsdApi::Helper::authorization(YhsdApi.configuration.app_key,YhsdApi.configuration.app_secret),
             :content_type => "application/x-www-form-urlencoded"
           }
         }
@@ -29,12 +29,6 @@ module YhsdApi
 
       end
 
-      def generate_authorization
-        content = "#{YhsdApi.configuration.app_key}:#{YhsdApi.configuration.app_secret}"
-        encode = Base64.encode64(content).delete("\n\r")
-        "Basic #{encode}"
-      end
-        
       def get(url)
 
         validate_token

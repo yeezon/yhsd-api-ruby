@@ -8,7 +8,7 @@ describe YhsdApi::PublicApp do
       config.app_secret = '6e6d1e96f23f49a1a59f9ce87fed1763'
       config.scope = 'read_basic,
       write_basic        '
-      config.auth_url = "http://apps.localtest.com/oauth2/authorize/"
+      config.auth_url = 'http://apps.localtest.com/oauth2/authorize/'
       config.token_url = 'http://apps.localtest.com/oauth2/token/'
       config.api_url = 'http://api.public.com/'
     end
@@ -36,7 +36,11 @@ describe YhsdApi::PublicApp do
   end
 
   it "configure api_url" do
-    expect(YhsdApi.configuration.api_url).to eq('http://api.public.com')
+    expect(YhsdApi.configuration.api_url).to eq('http://api.public.com/')
+  end
+
+  it "configure api_version" do
+    expect(YhsdApi.configuration.api_version).to eq('v1/')
   end
 
   it "public app get" do

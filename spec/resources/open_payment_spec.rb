@@ -7,7 +7,7 @@ describe YhsdApi::OpenPayment do
     #localtest
     @token = 'b66079ff889e463e8c583c2c3755bd2d'
     YhsdApi.configure do |config|
-      config.api_url = 'http://api.public.com/v1/'
+      config.api_url = 'http://api.public.com/'
       config.call_limit_protect = true
     end
     @id = 15
