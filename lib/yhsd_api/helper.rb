@@ -22,7 +22,7 @@ module YhsdApi
         hmac == OpenSSL::HMAC.hexdigest(digest, secret, str)
       end
 
-      def thirdapp_encrypt(secret, data = {})
+      def thirdapp_aes_encrypt(secret, data = {})
         raise 'secret can not be empty' if secret.to_s.empty?
         cipher = OpenSSL::Cipher::Cipher.new("aes-128-cbc")
         cipher.encrypt

@@ -39,14 +39,14 @@ describe YhsdApi::Helper do
     expect(YhsdApi::Helper::openpayment_verify(webhook_token, data, hmac)).to eq(true)
   end
 
-  it "thirdapp_encrypt must be success" do
+  it "thirdapp_aes_encrypt must be success" do
     customer_data = {
       "uid" => "test@youhaosuda.com",
       "type" => "email",
       "name" => "test"
     }
     secret = '3B975F95D7734B4094239E8CB46C4B7C'
-    expect(YhsdApi::Helper::thirdapp_encrypt(secret, customer_data.to_json)).to be_kind_of(String)
+    expect(YhsdApi::Helper::thirdapp_aes_encrypt(secret, customer_data.to_json)).to be_kind_of(String)
   end
 
 end
