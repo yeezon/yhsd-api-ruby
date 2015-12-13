@@ -4,6 +4,9 @@ module YhsdApi
 
     class << self
 
+      ###
+      #生成友好速搭安装回调地址方法
+      ###
       def authorize_url(redirect_uri, shop_key, state = '')
         raise MissingAppKey if YhsdApi.configuration.app_key.to_s.empty?
         raise MissingScope if YhsdApi.configuration.scope.to_s.empty?
@@ -18,6 +21,9 @@ module YhsdApi
         URI.join(YhsdApi.configuration.auth_url, params).to_s
       end
 
+      ###
+      #通过友好速搭分发的code获取店铺访问token方法
+      ###
       def generate_token(redirect_uri, code)
         raise MissingAppKey if YhsdApi.configuration.app_key.to_s.empty?
 

@@ -6,6 +6,9 @@ module YhsdApi
 
       attr_accessor :token
 
+      ###
+      #友好速搭私有App 获取API调用token 方法
+      ###
       def generate_token
       
         req_body = {
