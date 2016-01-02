@@ -9,7 +9,8 @@ module YhsdApi
       ###
       def authorization(key, secret)
         content = "#{key}:#{secret}"
-        encode = Base64.encode64(content).delete("\n\r")
+        # 使用遵循 RFC 4648 的 Base64 编码函数
+        encode = Base64.urlsafe_encode64(content)
         "Basic #{encode}"
       end
 
