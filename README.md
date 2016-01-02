@@ -32,7 +32,6 @@ $ gem install yhsd_api
 YhsdApi.configure do |config|
   config.app_key = '配置你的app_key'
   config.app_secret = '配置你的app_secret'
-  config.auth_url = "https://apps.youhaosuda.com/oauth2/authorize/"
   config.token_url = 'https://apps.youhaosuda.com/oauth2/token/'
   config.api_url = 'https://api.youhaosuda.com/'
   config.api_version = 'v1/'
@@ -173,7 +172,7 @@ YhsdApi::PublicApp::generate_token(redirect_url, code)
 #code :200
 #body hash 数据
 #header hash 数据
-YhsdApi::PrivateApp.get(token, url)
+YhsdApi::PublicApp.get(token, url)
 
 #put 接口调用
 #token 访问token
@@ -183,7 +182,7 @@ YhsdApi::PrivateApp.get(token, url)
 #code :200
 #body hash 数据
 #header hash 数据
-YhsdApi::PrivateApp.put(token, url, params)
+YhsdApi::PublicApp.put(token, url, params)
 
 #post 接口调用
 #token 访问token
@@ -193,7 +192,7 @@ YhsdApi::PrivateApp.put(token, url, params)
 #code :200
 #body hash 数据
 #header hash 数据
-YhsdApi::PrivateApp.post(token, url, params)
+YhsdApi::PublicApp.post(token, url, params)
 
 #delete 接口调用
 #token 访问token
@@ -202,7 +201,7 @@ YhsdApi::PrivateApp.post(token, url, params)
 #code :200
 #body hash 数据
 #header hash 数据
-YhsdApi::PrivateApp.delete(token, url)
+YhsdApi::PublicApp.delete(token, url)
 ```
 
 例子
@@ -210,7 +209,7 @@ YhsdApi::PrivateApp.delete(token, url)
 token = '店铺的访问token'
 
 #get 接口调用
-code, body, header = YhsdApi::PrivateApp.get(token, "shop")
+code, body, header = YhsdApi::PublicApp.get(token, "shop")
 
 #put 接口调用
 params = {
@@ -219,7 +218,7 @@ params = {
     "target": "/blogs"
   }
 }
-code, body, header = YhsdApi::PrivateApp.put(token, "redirects/1", params)
+code, body, header = YhsdApi::PublicApp.put(token, "redirects/1", params)
 
 #post 接口调用
 params = {
@@ -228,10 +227,10 @@ params = {
     "target": "/blogs"
   }
 }
-code, body, header = YhsdApi::PrivateApp.put("token, "redirects", params)
+code, body, header = YhsdApi::PublicApp.put("token, "redirects", params)
 
 #delete 接口调用
-code, body, header = YhsdApi::PrivateApp.delete(token, "redirects/1")
+code, body, header = YhsdApi::PublicApp.delete(token, "redirects/1")
 ```
 
 ## 贡献
