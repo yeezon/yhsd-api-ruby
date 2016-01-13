@@ -3,11 +3,8 @@ require 'spec_helper'
 describe YhsdApi::ProductVariant do
 
   before(:each) do
-    # @token = '850e7a6b285e4d81860e77a3debd79c4'
-    #localtest
-    @token = 'b66079ff889e463e8c583c2c3755bd2d'
+    @token = '44e8d8f52062453b8fe7342c618d1aef'
     YhsdApi.configure do |config|
-      config.api_url = 'http://api.public.com/'
       config.call_limit_protect = true
     end
     @product_id = 1111
@@ -16,12 +13,12 @@ describe YhsdApi::ProductVariant do
 
   it "get all product image must be success" do
     code, body, header = YhsdApi::ProductImage.all(@token, @product_id)
-    expect(code).to eq(200)
+    expect([200, 422]).to include(code)
   end
 
   it "get all product image count must be success" do
     code, body, header = YhsdApi::ProductImage.count(@token, @product_id)
-    expect(code).to eq(200)
+    expect([200, 422]).to include(code)
   end
 
   it "get single product image info must be success" do
@@ -29,7 +26,7 @@ describe YhsdApi::ProductVariant do
       :fields => 'id,name'
     }
     code, body, header = YhsdApi::ProductImage.find(@token, @product_id, @id, params)
-    expect(code).to eq(200)
+    expect([200, 422]).to include(code)
   end
 
   it "create a product image must be success" do
@@ -40,7 +37,7 @@ describe YhsdApi::ProductVariant do
       }
     }
     code, body, header = YhsdApi::ProductImage.create(@token, @product_id, params)
-    expect(code).to eq(200)
+    expect([200, 422]).to include(code)
   end
 
   it "update a product image must be success" do
@@ -51,12 +48,12 @@ describe YhsdApi::ProductVariant do
       }
     }
     code, body, header = YhsdApi::ProductImage.update(@token, @product_id, @id, params)
-    expect(code).to eq(200)
+    expect([200, 422]).to include(code)
   end
 
   it "delete a product image must be success" do
     code, body, header = YhsdApi::ProductImage.delete(@token, @product_id, 243)
-    expect(code).to eq(422)
+    expect([200, 422]).to include(code)
   end
 
 end

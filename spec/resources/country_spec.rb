@@ -3,11 +3,8 @@ require 'spec_helper'
 describe YhsdApi::Country do
 
   before(:each) do
-    # @token = '850e7a6b285e4d81860e77a3debd79c4'
-    #localtest
-    @token = 'b66079ff889e463e8c583c2c3755bd2d'
+    @token = '44e8d8f52062453b8fe7342c618d1aef'
     YhsdApi.configure do |config|
-      config.api_url = 'http://api.public.com/'
       config.call_limit_protect = true
     end
     @id = 1

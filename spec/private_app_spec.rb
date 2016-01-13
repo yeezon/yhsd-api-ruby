@@ -3,17 +3,9 @@ require 'spec_helper'
 describe YhsdApi::PrivateApp do
 
   before(:each) do
-    # YhsdApi.configure do |config|
-    #   config.app_key = 'a3769cf4b554454f9f099ea8c2f682b5'
-    #   config.app_secret = '64e1faedf62a41e89b6f7d0c73bd0812'
-    # end
-    #localtest
     YhsdApi.configure do |config|
-      config.app_key = 'ab3217683c964c82a685c22d9440f240'
-      config.app_secret = '13516ce822b841ce8d5b91630d97d050'
-      config.token_url = 'http://apps.localtest.com/oauth2/token/'
-      config.api_url = 'http://api.public.com/'
-      config.api_version = "v1"
+      config.app_key = '0249cb63872d43a28c0d9bf0ddfd6a9c'
+      config.app_secret = '45ab37bed9334b86b4cb6be2b4459cdf'
       config.call_limit_protect = true
     end
   end
@@ -30,6 +22,7 @@ describe YhsdApi::PrivateApp do
 
   it "private app generate_token" do
     token = YhsdApi::PrivateApp.generate_token
+    expect(token).to be_kind_of(String)
   end
 
   it "private app get" do

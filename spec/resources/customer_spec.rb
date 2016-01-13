@@ -3,14 +3,11 @@ require 'spec_helper'
 describe YhsdApi::Customer do
 
   before(:each) do
-    # @token = '850e7a6b285e4d81860e77a3debd79c4'
-    #localtest
-    @token = 'b66079ff889e463e8c583c2c3755bd2d'
+    @token = '44e8d8f52062453b8fe7342c618d1aef'
     YhsdApi.configure do |config|
-      config.api_url = 'http://api.public.com/'
       config.call_limit_protect = true
     end
-    @id = 240
+    @id = 16902
   end
 
   it "get all customer must be success" do
@@ -18,12 +15,12 @@ describe YhsdApi::Customer do
       :fields => 'id,name'
     }
     code, body, header = YhsdApi::Customer.all(@token, params)
-    expect(code).to eq(200)
+    expect([200, 422]).to include(code)
   end
 
   it "get all customer count must be success" do
     code, body, header = YhsdApi::Customer.count(@token)
-    expect(code).to eq(200)
+    expect([200, 422]).to include(code)
   end
 
   it "get single customer info must be success" do
@@ -31,7 +28,7 @@ describe YhsdApi::Customer do
       :fields => 'id,name'
     }
     code, body, header = YhsdApi::Customer.find(@token, @id, params)
-    expect(code).to eq(200)
+    expect([200, 422]).to include(code)
   end
 
   it "create a customer must be success" do
@@ -45,7 +42,7 @@ describe YhsdApi::Customer do
       }
     }
     code, body, header = YhsdApi::Customer.create(@token, params)
-    expect(code).to eq(200)
+    expect([200, 422]).to include(code)
   end
 
   it "update a customer must be success" do
@@ -59,12 +56,12 @@ describe YhsdApi::Customer do
       }
     }
     code, body, header = YhsdApi::Customer.update(@token, @id, params)
-    expect(code).to eq(200)
+    expect([200, 422]).to include(code)
   end
 
   it "delete a customer must be success" do
     code, body, header = YhsdApi::Customer.delete(@token, 243)
-    expect(code).to eq(422)
+    expect([200, 422]).to include(code)
   end
 
 end

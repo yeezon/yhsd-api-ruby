@@ -4,43 +4,25 @@ describe YhsdApi::PublicApp do
 
   before(:each) do
     YhsdApi.configure do |config|
-      config.app_key = 'd677ae82993a48fcaaf3c05ead9f46ea'
-      config.app_secret = '6e6d1e96f23f49a1a59f9ce87fed1763'
+      config.app_key = '57a7a5aeeb6b4db78f776e3add846e67'
+      config.app_secret = 'ca5c91b5ea1f48b78e8bf88ce8d8a6b2'
       config.scope = 'read_basic,
       write_basic        '
-      config.auth_url = 'http://apps.localtest.com/oauth2/authorize/'
-      config.token_url = 'http://apps.localtest.com/oauth2/token/'
-      config.api_url = 'http://api.public.com/'
     end
-    @token = 'b66079ff889e463e8c583c2c3755bd2d'
+    @token = '44e8d8f52062453b8fe7342c618d1aef'
+    @shop_key = '1bf2910a4df7ec3c211a9f39881716f8'
+    @redirect_url = 'https://youhaosuda.com'
+    @code = 'cb9b25dff47f40bc95e5244023ef05f9'
   end
 
-  it "configure app_key" do
-    expect(YhsdApi.configuration.app_key).to eq('d677ae82993a48fcaaf3c05ead9f46ea')
+  it "public app get authorize_url" do
+    uri = YhsdApi::PublicApp.authorize_url(@redirect_url, @shop_key)
+    expect(uri).to be_kind_of(String)
   end
 
-  it "configure app_secret" do
-    expect(YhsdApi.configuration.app_secret).to eq('6e6d1e96f23f49a1a59f9ce87fed1763')
-  end
-
-  it "configure scope" do
-    expect(YhsdApi.configuration.scope).to eq('read_basic,write_basic')
-  end
-
-  it "configure auth_url" do
-    expect(YhsdApi.configuration.auth_url).to eq('http://apps.localtest.com/oauth2/authorize/')
-  end
-
-  it "configure token_url" do
-    expect(YhsdApi.configuration.token_url).to eq('http://apps.localtest.com/oauth2/token/')
-  end
-
-  it "configure api_url" do
-    expect(YhsdApi.configuration.api_url).to eq('http://api.public.com/')
-  end
-
-  it "configure api_version" do
-    expect(YhsdApi.configuration.api_version).to eq('v1/')
+  it "public app generate token " do
+    token = YhsdApi::PublicApp.generate_token(@redirect_url, @code)
+    expect(token).to be_kind_of(String)
   end
 
   it "public app get" do
