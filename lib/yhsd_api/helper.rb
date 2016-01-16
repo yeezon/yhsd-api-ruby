@@ -19,7 +19,13 @@ module YhsdApi
       ###
       def hmac_verify(secret, params = {})
         raise 'secret can not be empty' if secret.to_s.empty?
-        hmac = params[:hmac].to_s
+        if params.has_key?(:hmac)
+          hmac = params[:hmac].to_s
+        elsif params.has_key?("hmac")
+          hmac = params["hmac"].to_s
+        else
+          return false
+        end
         return false if hmac.empty?
         p = params.delete_if{|key, value| key.to_s == "hmac"}
         str = p.keys.sort.map do |k|
