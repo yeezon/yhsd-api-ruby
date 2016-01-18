@@ -57,6 +57,15 @@ module YhsdApi
         calculated_hmac == hmac
       end
 
+      def generate_hmac(secret, params = {})
+        raise 'secret can not be empty' if secret.to_s.empty?
+        str = params.keys.sort.map do |k|
+          "#{k.to_s}=#{params[k].to_s}"
+        end.join('&')
+        digest = OpenSSL::Digest.new('sha256')
+        OpenSSL::HMAC.hexdigest(digest, secret, str)
+      end
+
       ###
       #友好速搭开放支付回调验证
       ###

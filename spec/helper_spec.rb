@@ -37,6 +37,17 @@ describe YhsdApi::Helper do
     expect(YhsdApi::Helper::hmac_verify(secret, params)).to eq(true)
   end
 
+  it "string generate_hmac must be success" do
+    params = {  
+      "shop_key" => "a94a110d86d2452eb3e2af4cfb8a3828",  
+      "code" => "a84a110d86d2452eb3e2af4cfb8a3828",  
+      "account_id" => "1",
+      "time_stamp" => "2013-08-27T13:58:35Z"
+    }
+    secret = "hush"
+    expect(YhsdApi::Helper::generate_hmac(secret, params)).to eq('a2a3e2dcd8a82fd9070707d4d921ac4cdc842935bf57bc38c488300ef3960726')
+  end
+
   it "webhook_verify must be success" do
     data ="{\"created_at\":\"2014-08-28T17:28:13.301+08:00\",\"domain\":\"www.example.com\",\"enable_email_regist\":true,\"enable_mobile_regist\":true,\"enable_username_regist\":true,\"name\":\"TEST\",\"page_description\":\"\",\"page_title\":\"\",\"updated_at\":\"2015-07-27T13:58:14.607+08:00\",\"url\":\"http://w...content-available-to-author-only...e.com\",\"webhook_token\":\"906155047ff74a14a1ca6b1fa74d3390\"}"
     webhook_token = "906155047ff74a14a1ca6b1fa74d3390"
