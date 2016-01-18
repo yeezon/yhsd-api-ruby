@@ -113,6 +113,10 @@ module YhsdApi
         raise MissingToken if token.to_s.empty?
       end
 
+      def verify_hmac(params)
+        YhsdApi::Helper::hmac_verify(YhsdApi.configuration.app_secret, params)
+      end
+
     end
 
   end

@@ -65,4 +65,32 @@ describe YhsdApi::PrivateApp do
     expect([200, 422]).to include(code)
   end
 
+  it "symbol hmac_verify must be success" do
+    YhsdApi.configure do |config|
+      config.app_secret = 'hush'
+    end
+    params = {  
+      "shop_key": "a94a110d86d2452eb3e2af4cfb8a3828",  
+      "code": "a84a110d86d2452eb3e2af4cfb8a3828",  
+      "account_id": "1",
+      "time_stamp": "2013-08-27T13:58:35Z",    
+      "hmac": "a2a3e2dcd8a82fd9070707d4d921ac4cdc842935bf57bc38c488300ef3960726"
+    }
+    expect(YhsdApi::PublicApp::hmac_verify(params)).to eq(true)
+  end
+
+  it "string hmac_verify must be success" do
+    YhsdApi.configure do |config|
+      config.app_secret = 'hush'
+    end
+    params = {  
+      "shop_key" => "a94a110d86d2452eb3e2af4cfb8a3828",  
+      "code" => "a84a110d86d2452eb3e2af4cfb8a3828",  
+      "account_id" => "1",
+      "time_stamp" => "2013-08-27T13:58:35Z",    
+      "hmac" => "a2a3e2dcd8a82fd9070707d4d921ac4cdc842935bf57bc38c488300ef3960726"
+    }
+    expect(YhsdApi::PublicApp::hmac_verify(params)).to eq(true)
+  end
+
 end
