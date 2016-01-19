@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = YhsdApi::VERSION
   spec.authors       = ["jinhua"]
   spec.email         = ["kg19902933@gmail.com"]
-  spec.summary       = %q{Youhaosuda App SDK}
-  spec.description   = %q{Youhaosuda App SDK}
+  spec.summary       = %q{The youhaosuda API gem provide developers quick use public API, Just need to do the configuration section.}
+  spec.description   = %q{The youhaosuda API gem provide developers quick use public API, Just need to do the configuration section.}
   spec.homepage      = "https://www.youhaosuda.com"
   spec.license       = "MIT"
 
